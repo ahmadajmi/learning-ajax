@@ -1,0 +1,48 @@
+body {
+  font-size: 100%;
+}
+
+.clearfix:before,
+.clearfix:after {
+    content: "";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+.wrapper {
+  max-width: 800px;
+  margin: 50px auto;
+}
+
+.row {
+	max-width: 800px;
+}
+
+.columns {
+	float: left;
+}
+
+h1 {
+	font-weight: 300;
+}
+
+td {
+	border-style: solid;
+	border-width: 1px;
+	font-size: 300%;
+}
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.scucess {
+  color: #339900;
+}
+.error {
+  color: red;
+}
