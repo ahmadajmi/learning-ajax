@@ -13,13 +13,6 @@
     <body>
 
         <div class="wrapper">
-
-        <?php
-            if ($_REQUEST) {
-              echo $_REQUEST['username'];
-            }
-        ?>
-
             <h4>Ajax</h4>
             <form>
               <input type="text" name="username" id="name"><span class="status"></span><br>
