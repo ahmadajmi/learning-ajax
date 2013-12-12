@@ -16,7 +16,21 @@ $(function() {
   // responds to the request
   // tell th ebrowser how to send the request to the server
   // send the request obect
+  
 
+  // readyState
+  //  The browser uses the readyState property to tell you where your request 
+  //  is in its processing lifecycle
+  // responseXML
+  //  - contains the XML sent from the server if the the server sends the data as XML
+  // responseText
+  //  - the server respond usually text but it might be XML
+  // status and ststusText
+  //  - tells about the HTTP status that was returned by the server
+  //    such as 200 for 'ok' or 404 for 'Not Found'
+  //  onreadystatechange
+  //    - the callback function that we use to tell the browser what function to call
+  //      when the server responds to a request.
     function log(msg) {
         return console.log(msg);
     }
