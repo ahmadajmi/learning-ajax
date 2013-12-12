@@ -3,7 +3,7 @@
 $username = $_REQUEST['username'];
 
 if ($username == "adham") {
-  echo "<small class='scucess'> Ok</small>";
+  echo "ok";
 } else {
-  echo "<small class='error'> Sorry</small>";
+  echo "sorry";
 }

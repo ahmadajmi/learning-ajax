@@ -39,10 +39,23 @@ td {
   width: 80%;
   margin: 0 auto;
 }
-
-.scucess {
-  color: #339900;
+.status {
+  width: 5px;
+  height: 5px;
+  margin-left: 1em;
+  border-radius: 10px;
+  vertical-align: middle;
+  display: inline-block;
 }
-.error {
-  color: red;
+
+.status--pending {
+  background-color: #999;
+}
+
+.status--success {
+  background-color: #339900;;
+}
+
+.status--alert {
+  background-color: red;
 }

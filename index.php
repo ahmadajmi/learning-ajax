@@ -13,12 +13,19 @@
     <body>
 
         <div class="wrapper">
+
+        <?php
+            if ($_REQUEST) {
+              echo $_REQUEST['username'];
+            }
+        ?>
+
             <h4>Ajax</h4>
             <form>
-              <input type="text" name="username" id="name"><span class="status"><span><br>
-              <input type="submit" value="Send">
+              <input type="text" name="username" id="name"><span class="status"></span><br>
+              <input type="submit" id="submit" value="Send">
             </form>
-                    </div><!-- wrapper -->
+          </div><!-- wrapper -->
 
         <!-- JavaScript -->
         <script type="text/javascript" src="js/jquery-1.9.1.js"></script>
