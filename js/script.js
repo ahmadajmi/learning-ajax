@@ -48,28 +48,26 @@ $(function() {
   //=================
   //  The ways the web form can send the request to the server
   //  --------------------------------------------------------
-    function log(msg) {
-        return console.log(msg);
-    }
 
-    window.onload = initPage;
+  function log(msg) {
+    return console.log(msg);
+  }
 
-    var username = document.querySelector('#name');
-    var status = document.querySelector('.status');
-    var submit = document.querySelector('#submit');
+  var username  = document.querySelector('#name');
+  var status    = document.querySelector('.status');
+  var submit    = document.querySelector('#submit');
 
-    function initPage() {
-      username.onblur = checkUsername;
-      submit.disabled = true;
-      //log("page is loaded and i'm in");
-    }
+  window.onload = initPage;
 
-    // when the user leaves th ebrowser this function will create a request object
-    // This is the function that will create and send the
-    // request object
+  function initPage() {
+    username.onblur = checkUsername;
+    submit.disabled = true;
+  }
+
+    // when the user leaves the input this function will create a request object
     function checkUsername() {
-      // Disale ths button if the user tried a different username for the second time after one succes
-      // this will ensure the button is disbled any every case
+      // Disale ths button if the user tried a different username for the second 
+      // time after one succes this will ensure the button is disbled any every case
       submit.disabled = true;
 
       var theName = escape(username.value);
@@ -77,38 +75,21 @@ $(function() {
         status.innerHTML = '<small class="error"> Please type a name</small>'
         return;
       }
-      //log("1 => Got the name: " + theName);
-
-      // here we do a request oject
+      
       request = createRequest();
-
-      // at first readyState will be 0 before any thing else
-      //log(request.readyState);
 
       if (request == null) {
         alert("Unable to create a request object");
       } else {
-        //log("2 => Got the request Object");
         var url = "php/checkName.php?username=" + theName;
-        //log("3=> " + url);
-       //log(request.readyState);
         request.onreadystatechange = showUsernameStatus;
-        //log(request.readyState);
         request.open('GET', url, true);
-        //log(request.readyState);
-
         request.send(null);
-
       }
     }
 
-    // The browser makes the server response avialable to your code throuht the 
-    // properties of your object
-
-    // This will update the page after the browser gets 
-    // a response from the server
+    // This will update the page after the browser gets a response from the server
     function showUsernameStatus(){
-      log(request.readyState);
 
       if (request.readyState == 1) {
         status.className = 'status status--pending';
@@ -118,19 +99,75 @@ $(function() {
         setTimeout(function(){
           if (request.status == 200) {
             if (request.responseText == 'ok') {
-                status.className = 'status status--success';
-                submit.disabled = false;
+              status.className = 'status status--success';
+              submit.disabled = false;
             } else {
               status.className = 'status status--alert';
               username.select();
               submit.disabled = true;
 
             }
-        }
+          }
         }, 1000);
-
       }
 
     }
 
-});
+  });
+
+
+// Design patterns
+
+// - The Creation pattern
+var newObject = new Object(); // or
+var newObject = {};
+newObject['someValue'] = "Hello World";
+
+// - The Constructor Pattern
+function Car(model, year, miles) {
+  this.model = model;
+  this.year = year;
+  this.miles = miles;
+}
+
+Car.prototype.toString = function() {
+  return this.model + " hase done " + this.miles + " miles";
+}
+
+var civic = new Car("Honda Civic", 2009, 20000);
+
+// - The Singleton Pattern
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
