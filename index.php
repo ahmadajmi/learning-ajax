@@ -14,34 +14,48 @@
 <body>
 
   <div class="wrapper">
-    <h4>Ajax Ch2</h4>
-    <form class="form-inline">
-      <div class="form-group">
-        <input type="text" name="username" id="name"  class="form-control"></span>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Ajax Ch2</div>
+      <div class="panel-body">
+        <p>This example aplied what's in chapter 2 and added more enhancments, it does check for a user name from the database 
+          and if it is a vailable you will see a green notification, but if not a red notification will appear.
+        </p>
+        <p>type <code>adham</code> and let it green.</p>
+
+        <form class="form-inline">
+          <div class="form-group">
+            <input type="text" name="username" id="name"  class="form-control"></span>
+          </div>
+          <div class="form-group">
+            <span class="status">
+            </div>
+            <div class="form-group">
+              <input type="submit" id="submit" value="Send" class="btn btn-default">
+            </div>
+          </form>
+
+        </div>
       </div>
-      <div class="form-group">
-        <span class="status">
-        </div>
-        <div class="form-group">
-          <input type="submit" id="submit" value="Send" class="btn btn-default">
-        </div>
-      </form>
 
-      <h4>Embedly</h4>
-      <p>This example connects to the embedly and embed the object info after the form. </p>
-      <form class="form-inline">
-        <div class="form-group">
-          <input type="text" name="url" id="url"  class="form-control"></span><br>
-          Try: <code>http://www.youtube.com/watch?v=9ei-rbULWoA</code>
-        </div>
-        <div class="form-group">
-          <input type="submit" id="embed" value="Embed" class="btn btn-default">
-        </div>
-      </form>
 
-      <ul class="media-list">
-
-      </ul>
+      <div class="panel panel-default">
+        <div class="panel-heading">Embedly</div>
+        <div class="panel-body">
+          <p>This example connects to the embedly and embed the object info after the form. </p>
+          <p>Try: <code>http://www.youtube.com/watch?v=9ei-rbULWoA</code></p>
+          <form class="form-inline">
+            <div class="form-group">
+              <input type="text" name="url" id="url"  class="form-control"></span><br>
+            </div>
+            <div class="form-group">
+              <input type="submit" id="embed" value="Embed" class="btn btn-default">
+            </div>
+          </form>
+          <!-- We will inject the new objects here -->
+          <p><ul class="media-list"></ul></p>
+        </div>
+      </div>
 
       <input class="button" type="button" value="GetPage">
       <div id="html5rocks"></div>

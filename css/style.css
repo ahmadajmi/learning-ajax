@@ -8,11 +8,6 @@
   clear: both;
 }
 
-.wrapper {
-  max-width: 800px;
-  margin: 50px auto;
-}
-
 .row {
 	max-width: 800px;
 }
@@ -33,7 +28,7 @@ td {
 
 .wrapper {
   width: 80%;
-  margin: 0 auto;
+  margin: 50px auto;
 }
 .status {
   width: 5px;
