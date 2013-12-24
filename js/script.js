@@ -1,6 +1,5 @@
 $(function() {
 
-
   // onblur event triggers a call to our JS
   // JS function create a nd sends the request object
   // The request object tells the server what username the user chose
@@ -60,118 +59,94 @@ $(function() {
     submit.disabled = true;
   }
 
-    // when the user leaves the input this function will create a request object
-    function checkUsername() {
-      // Disale ths button if the user tried a different username for the second 
-      // time after one succes this will ensure the button is disbled any every case
-      submit.disabled = true;
+  // when the user leaves the input this function will create a request object
+  function checkUsername() {
+    // Disale ths button if the user tried a different username for the second 
+    // time after one succes this will ensure the button is disbled any every case
+    submit.disabled = true;
 
-      var theName = escape(username.value.trim());
-      if (theName == '') {
-        status.className += ' status--alert';
-        return;
-      }
-
-      request = createRequest();
-
-      if (request == null) {
-        alert("Unable to create a request object");
-      } else {
-        //var url = "php/checkName.php?username=" + theName;
-        //request.onreadystatechange = showUsernameStatus;
-        //request.open('GET', url, true);
-        var url = "php/checkName.php";
-        request.onreadystatechange = showUsernameStatus;
-        request.open('POST', url, true);
-        request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
-        request.send("username=" + theName);
-      }
+    var theName = escape(username.value.trim());
+    if (theName == '') {
+      status.className += ' status--alert';
+      return;
     }
 
-    // This will update the page after the browser gets a response from the server
-    function showUsernameStatus(){
+    request = createRequest();
 
-      if (request.readyState == 1) {
-        status.className = 'status status--pending';
-      }
+    if (request == null) {
+      alert("Unable to create a request object");
+    } else {
+      var url = "php/checkName.php";
+      request.onreadystatechange = showUsernameStatus;
+      request.open('POST', url, true);
+      request.setRequestHeader('Content-type', 'application/x-www-form-urlencoded');
+      request.send("username=" + theName);
+    }
+  }
 
-      if (request.readyState == 4) {
-        setTimeout(function(){
-          if (request.status == 200) {
-            if (request.responseText == 'ok') {
-              status.className += ' status--success';
-              submit.disabled = false;
-            } else {
-              status.className += ' status--alert';
-              username.select();
-              submit.disabled = true;
+  // This will update the page after the browser gets a response from the server
+  function showUsernameStatus(){
 
-            }
-          }
-        }, 1000);
-      }
-
+    if (request.readyState == 1) {
+      status.className = 'status status--pending';
     }
 
-    var button = document.querySelector('.button');
-    var overlay = document.querySelector('.overlay');
-    var overlay = document.createElement('div');
-    overlay.className = 'overlay';
-
-    function getpage() {
-      document.body.appendChild(overlay);
-
-      request = createRequest();
-      request.onreadystatechange = updateContent;
-
-      request.open('GET', 'http://www.html5rocks.com/en/tutorials/file/xhr2/', true);
-      request.send(null);
-    }
-
-    function updateContent() {
-      content = document.querySelector('#html5rocks');
-      try {
-        if (request.readyState == 4) {
-          if (request.status == 200) {
-            overlay.style.display = 'none';
-            content.innerHTML = request.responseText;
-
+    if (request.readyState == 4) {
+      setTimeout(function(){
+        if (request.status == 200) {
+          if (request.responseText == 'ok') {
+            status.className += ' status--success';
+            submit.disabled = false;
           } else {
-            overlay.style.display = 'none';
-            content.innerHTML = "Error, please check you connection";
+            status.className += ' status--alert';
+            username.select();
+            submit.disabled = true;
+
           }
         }
-      } catch (e) {
-        log(e);
-      } 
+      }, 1000);
     }
 
-    button.onclick = getpage;
+  }
 
-  });
+  var button = document.querySelector('.button');
+  var overlay = document.querySelector('.overlay');
+  var overlay = document.createElement('div');
+  overlay.className = 'overlay';
+
+  function getpage() {
+    document.body.appendChild(overlay);
+
+    request = createRequest();
+    request.onreadystatechange = updateContent;
+
+    request.open('GET', 'http://www.html5rocks.com/en/tutorials/file/xhr2/', true);
+    request.send(null);
+  }
+
+  function updateContent() {
+    content = document.querySelector('#html5rocks');
+    try {
+      if (request.readyState == 4) {
+        if (request.status == 200) {
+          overlay.style.display = 'none';
+          content.innerHTML = request.responseText;
+
+        } else {
+          overlay.style.display = 'none';
+          content.innerHTML = "Error, please check you connection";
+        }
+      }
+    } catch (e) {
+      log(e);
+    } 
+  }
+
+  button.onclick = getpage;
+
+});
 
 
-// Design patterns
-
-// - The Creation pattern
-var newObject = new Object(); // or
-var newObject = {};
-newObject['someValue'] = "Hello World";
-
-// - The Constructor Pattern
-function Car(model, year, miles) {
-  this.model = model;
-  this.year = year;
-  this.miles = miles;
-}
-
-Car.prototype.toString = function() {
-  return this.model + " hase done " + this.miles + " miles";
-}
-
-var civic = new Car("Honda Civic", 2009, 20000);
-
-// - The Singleton Pattern
 
 
 
