@@ -36,6 +36,10 @@ function get_embedly_info(request_url) {
   request.send();
 }
 
+/* TO DO 
+  Find a better way to embed the html into the webpage
+*/
+
 function show_embed_info() {
 
   document.body.appendChild(overlay);
