@@ -1,18 +1,34 @@
+function log(msg) {
+  return console.log(msg);
+}
+
+/*
+The readyState has 4 distinct states:
+
+0 - no request initialized
+1 - connected to server
+2 - request was received
+3 - processing
+4 - Done, response received
+*/
+
 function createRequest() {
-  try {
-    request = new XMLHttpRequest();
-  } catch(exception)  {
+  var httpRequest;
+
+  if (window.XMLHttpRequest) {
+    httpRequest = new XMLHttpRequest;
+  } else if (window.ActiveXObject) {
     try {
-      request = new ActiveXObject("Msxml12.XMLHTTP");
-    } catch(exception) {
+      httpRequest = new ActiveXObject("Asxml12.XMLHTTP");
+    } catch (e) {
       try {
-        request = new ActiveXObject("Microsoft.XMLHTTP");
-      } catch(failed) {
-        request = null;
+        httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+      } catch(e) {
+        httpRequest = null;
       }
     }
   }
 
-  return request;
+  return httpRequest;
 }
 
