@@ -127,15 +127,12 @@ $(function() {
   function updateContent() {
     content = document.querySelector('#html5rocks');
     try {
-      if (request.readyState == 4) {
-        if (request.status == 200) {
-          overlay.style.display = 'none';
-          content.innerHTML = request.responseText;
-
-        } else {
-          overlay.style.display = 'none';
-          content.innerHTML = "Error, please check you connection";
-        }
+      if (request.readyState == 4 && request.status == 200) {
+        overlay.style.display = 'none';
+        content.innerHTML = request.responseText;
+      } else {
+        overlay.style.display = 'none';
+        content.innerHTML = "Error, please check you connection";
       }
     } catch (e) {
       log(e);
