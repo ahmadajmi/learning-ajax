@@ -141,6 +141,29 @@ $(function() {
 
   button.onclick = getpage;
 
+
+  // formValidation
+
+  var form = document.forms.formValidation;
+  var form_button = form.elements.submit;
+
+  function validInfo() {
+
+    // get form elements
+    form_elements = form.elements;
+    log(form_elements);
+
+    for (var i = 0; i < form_elements.length; i++) {
+      log(form_elements[i].value);
+    };
+
+  }
+
+  form_button.onclick = function () {
+    log(2);
+  }
+
+
 });
 
 

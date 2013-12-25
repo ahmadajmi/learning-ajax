@@ -70,7 +70,7 @@
 
               <div id="content">
 
-                <form class="form-inline" action="form.php" method="POST">
+                <form class="form-inline" id="formValidation" name="formValidation" action="form.php" method="POST">
                   <div class="form-group">
                   <input type="text" name="url" id="onfocus"  class="form-control"></span><br>
                   <span class="input-help hide">?</span>
@@ -81,7 +81,7 @@
                       <option value="2">123</option>
                       <option value="3">123</option>
                     </select>
-                    <input type="submit" id="onfocusbtn" value="Embed" class="btn btn-default">
+                    <input type="button" name="submit" id="onfocusbtn" value="Embed" class="btn btn-default">
                   </div>
                 </form>
 
